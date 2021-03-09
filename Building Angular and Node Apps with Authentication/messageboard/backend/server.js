@@ -1,8 +1,17 @@
+/**
+ * Importing modules
+ */
 var express = require("express");
-var bodyParser = require("body-parser");
 var jwt = require("jsonwebtoken");
 
+/**
+ * Variable declaration
+ */
 var app = express();
+var api = express.Router();
+var auth = express.Router();
+
+app.use(express.json());
 
 var messages = [
   { text: "Hello", owner: "Tim" },
@@ -11,7 +20,9 @@ var messages = [
 
 var users = [{ firstName: "a", email: "a", password: "a", id: 0 }];
 
-app.use(bodyParser.json());
+/**
+ * Setting CORS
+ */
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -21,9 +32,10 @@ app.use((req, res, next) => {
   next();
 });
 
-var api = express.Router();
-var auth = express.Router();
 
+/**
+ * App routes
+ */
 api.get("/messages", (req, res) => {
   res.json(messages);
 });
@@ -62,6 +74,7 @@ auth.post("/login", (req, res) => {
 });
 
 auth.post("/register", (req, res) => {
+  console.log(req.body)
   var index = users.push(req.body) - 1;
   var user = users[index];
   user.id = index;
@@ -69,15 +82,32 @@ auth.post("/register", (req, res) => {
   sendToken(user, res);
 });
 
+/**
+ * This function sets a JWT token for a specific user identified by and id along with the private key decoder 
+ * @param {*} user 
+ * @param {*} res 
+ */
 function sendToken(user, res) {
-  var token = jwt.sign(user.id, "123");
+  // In production, the key parameter should not be hard-coded and should come from a configuration file instead
+  var token = jwt.sign(user.id, "123"); 
   res.json({ firstName: user.firstName, token });
 }
 
+/**
+ * This function sends an error message in case of an inexisting user
+ * @param {*} res 
+ * @returns a JSON object with a message
+ */
 function sendAuthError(res) {
   return res.json({ success: false, message: "Email or Password incorrect" });
 }
 
+/**
+ * This function checks whether the user has been authenticated with a valid name and password
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 function checkAuthenticated(req, res, next) {
   if(!req.header('authorization')) 
     return res.status(401).send({message: 'Unauthorized request. Missing authentication header.'});
@@ -92,6 +122,9 @@ function checkAuthenticated(req, res, next) {
   next();
 }
 
+/**
+ * Router setting
+ */
 app.use("/api", api);
 app.use("/auth", auth);
 

@@ -37,7 +37,7 @@ There are 6 routes:
     - http:localhost:4200/messages/:user - *displays message from specific user*
   - http:localhost:4200/login - *logs in registered users*
   - http:localhost:4200/register - *register a new user to the application*
-  - http:localhost:4200/user - *submits changes to a user First Name and Last Name*
+  - http:localhost:4200/user - *submits changes to a user's First Name and Last Name*
 
 
 ## Development
