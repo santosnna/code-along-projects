@@ -62,7 +62,7 @@ api.post('/users/me', checkAuthenticated, (req, res) => {
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
 
-  res.json(user);
+  // res.json(user);
 });
 
 auth.post("/login", (req, res) => {
@@ -128,4 +128,4 @@ function checkAuthenticated(req, res, next) {
 app.use("/api", api);
 app.use("/auth", auth);
 
-app.listen(63145);
+app.listen(63145, () => {console.log('Server running on port 63145')});
