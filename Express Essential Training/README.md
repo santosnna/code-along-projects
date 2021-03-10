@@ -18,14 +18,14 @@ The server runs on port **3000** . <!-- Check for port on project -->
 
 ### App routes
 There are 7 routes:
-  - http:localhost:3000 - *displays all data*
-  - http:localhost:3000/tent.jpg - *sends a static file JPG image response from 'public'*
-  - http:localhost:3000/download - *sends a download response*
-  - http:localhost:3000/redirect - *sends a redirect response to the LinkedIn website*
-  - http:localhost:3000/end - *sends an end response*
-  - http:localhost:3000/item/:id - *displays a specific item*
-    - ':id' should be a number from 0 - 50 or any other included id number
-  - http:localhost:3000/images/rocket.jpg - *sends a JPG file image response*
+- http:localhost:3000 - *displays all data*
+- http:localhost:3000/tent.jpg - *sends a static file JPG image response from 'public'*
+- http:localhost:3000/download - *sends a download response*
+- http:localhost:3000/redirect - *sends a redirect response to the LinkedIn website*
+- http:localhost:3000/end - *sends an end response*
+- http:localhost:3000/item/:id - *displays a specific item*
+  - ':id' should be a number from 0 - 50 or any other included id number
+- http:localhost:3000/images/rocket.jpg - *sends a JPG file image response*
 
 You may also test the following endpoints using Postman:
 - http:localhost:3000/newItem - *sends a POST request to include a new item*

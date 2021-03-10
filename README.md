@@ -14,7 +14,8 @@ It consists of the following projects:
 This is a message board web application with both front-end and back-end components. The system displays messages registered in the application, which can be filtered by name, and has a function for posting new messages that are updated in real time sending notifications for success or failure. It allows for user registration with appropriate form validation and login/logout of existing accounts.
 
 ### Building RESTful APIs with Node.js and Express.js
-...
+This is web application consists of a backend server with routing endpoints to retrieve data from a JSON file, to serve static files such as images, and to simulate POST, PUT and DELETE requests. It was created using the Express application generator.
+
 ### Express Essential Training
 ...
 ### Node.js - Securing RESTful APIs
